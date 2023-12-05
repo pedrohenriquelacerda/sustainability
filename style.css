@@ -1,0 +1,119 @@
+/**
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+label,
+h3 {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: large;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  font-size: larger;
+}
+
+#root {
+  position: relative;
+  height: 100vh;
+  /* Define a altura da div para ocupar toda a altura da tela */
+}
+
+#fixed-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border: 2px;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 1px -5px 19px 0px rgba(0, 0, 0, 0.37);
+  -webkit-box-shadow: 1px -5px 19px 0px rgba(0, 0, 0, 0.37);
+  -moz-box-shadow: 1px -5px 19px 0px rgba(0, 0, 0, 0.37);
+}
+
+.trash-icons {
+  width: 3rem;
+  margin: auto;
+  /* Adiciona um espaçamento entre as imagens */
+  cursor: pointer;
+}
+
+#trash-icons-container {
+  display: flex;
+  flex-wrap: nowrap;
+  /* Permite que as imagens quebrem para a próxima linha quando não couberem mais na largura */
+}
+
+#button-container {
+  width: 100%;
+  /* Ocupa toda a largura disponível */
+  text-align: center;
+  /* Centraliza o botão horizontalmente */
+  margin-top: 10px;
+  /* Espaçamento superior para separar o botão das imagens */
+  margin-bottom: 5px;
+  /* Espaçamento inferior para separar o botão do rodapé */
+}
+
+#top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.trash-button{
+  background-color: transparent;
+  border-radius: 12px;
+  border: 3px solid rgb(211, 211, 211);
+  cursor: not-allowed;
+}
+
+.organic{
+  border-color: chocolate;
+  cursor: pointer;
+}
+
+.plastic{
+  border-color: red;
+  cursor: pointer;
+}
+
+.glass{
+  border-color: green;
+  cursor: pointer;
+}
+
+.metal{
+  border-color: yellow;
+  cursor: pointer;
+}
+
+.paper{
+  border-color: blue;
+  cursor: pointer;
+}
