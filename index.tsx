@@ -113,7 +113,7 @@ const App: React.VFC = () => {
             onClick={selectPlastic}
           />
           <img
-            src={trash.type === "glass" ? "./icons/vidro.svg" : "./icons/vidroVazado.svg"}
+            src={trash.type === "glass" ? "./assets/icons/vidro.svg" : "./assets/icons/vidroVazado.svg"}
             alt=""
             className="trash-icons"
             onClick={selectGlass}
