@@ -101,19 +101,19 @@ const App: React.VFC = () => {
       <div id="fixed-bar">
         <div id="trash-icons-container">
           <img
-            src={trash.type === "organic" ? "./public/icons/organico.svg" : "./public/icons/organicoVazado.svg"}
+            src={trash.type === "organic" ? "./icons/organico.svg" : "./icons/organicoVazado.svg"}
             alt=""
             className="trash-icons"
             onClick={selectOrganic}
           />
           <img
-            src={trash.type === "plastic" ? "./public/icons/plastico.svg" : "./icons/plasticoVazado.svg"}
+            src={trash.type === "plastic" ? "./icons/plastico.svg" : "./icons/plasticoVazado.svg"}
             alt=""
             className="trash-icons"
             onClick={selectPlastic}
           />
           <img
-            src={trash.type === "glass" ? "./assets/icons/vidro.svg" : "./assets/icons/vidroVazado.svg"}
+            src={trash.type === "glass" ? "./icons/vidro.svg" : "./icons/vidroVazado.svg"}
             alt=""
             className="trash-icons"
             onClick={selectGlass}
