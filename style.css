@@ -79,41 +79,66 @@ input {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 10px;
-  text-align: center;
+  text-align: left;
 }
 
-.trash-button{
+.trash-button {
   background-color: transparent;
   border-radius: 12px;
   border: 3px solid rgb(211, 211, 211);
   cursor: not-allowed;
 }
 
-.organic{
+.organic {
   border-color: chocolate;
   cursor: pointer;
 }
 
-.plastic{
+.plastic {
   border-color: red;
   cursor: pointer;
 }
 
-.glass{
+.glass {
   border-color: green;
   cursor: pointer;
 }
 
-.metal{
+.metal {
   border-color: yellow;
   cursor: pointer;
 }
 
-.paper{
+.paper {
   border-color: blue;
   cursor: pointer;
+}
+
+#trashInfoButton {
+  background-color: transparent;
+  border-radius: 12px;
+  border: 3px solid rgb(69, 69, 69);
+  cursor: not-allowed;
+}
+
+#buttonModal {
+  background: #807f7f;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#trashModal {
+  border: none;
+  padding: 10px 20px;
+  text-align: justify;
+  list-style-type: none;
+  display: inline-block;
+  font-size: 1.1rem;
 }
