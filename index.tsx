@@ -113,6 +113,7 @@ const App: React.VFC = () => {
           style={{ flexGrow: '1', height: '100%' }}
           streetViewControl={false}
           zoomControl={false}
+          fullscreenControl={false}
         >
           {trashes.map((trash: Trash, i) => (
             <Marker
@@ -125,13 +126,13 @@ const App: React.VFC = () => {
         </Map>
       </Wrapper>
 
-      <div id='top-bar'>
+
         <img
           src='./logo.png'
+          id='top-bar'
           alt='Trash Bins'
-          style={{ width: '20%', height: 'auto' }}
+          style={{ width: '5rem', height: 'auto' }}
         />
-      </div>
 
       {/* Fixed bar */}
       <div id='fixed-bar'>

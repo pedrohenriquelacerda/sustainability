@@ -28,7 +28,7 @@ export const TrashHelpModal: React.FC<TrashHelpModalProps> = ({
         <img
           src='./logo.png'
           alt='Trash Bins'
-          style={{ width: '40%', height: 'auto' }}
+          style={{ width: '15rem', height: 'auto' }}
         />
         <h1>Types of Trash Bins</h1>
         <p>
@@ -59,11 +59,12 @@ export const TrashHelpModal: React.FC<TrashHelpModalProps> = ({
             <strong>Paper:</strong> Paper, cardboard, and paper products in
             general.
           </li>
+          <li style={{ textAlign: 'center', paddingTop: "20px"}}>
+            <button id='buttonModal' onClick={onBackDropClick}>
+              Got It
+            </button>
+          </li>
         </ul>
-
-        <button id='buttonModal' onClick={onBackDropClick}>
-          Got It
-        </button>
       </div>
     </BaseModal>
   )

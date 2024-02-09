@@ -38,7 +38,7 @@ input {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255);
   color: black;
   padding: 10px;
   text-align: center;
@@ -78,9 +78,9 @@ input {
 #top-bar {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   color: white;
-  text-align: left;
+  text-align: right;
 }
 
 .trash-button {
@@ -123,9 +123,9 @@ input {
 }
 
 #buttonModal {
-  background: #807f7f;
+  background: rgb(0, 11, 64);
   border: none;
-  color: rgb(0, 0, 0);
+  color: white;
   padding: 10px 20px;
   text-align: center;
   display: inline-block;
