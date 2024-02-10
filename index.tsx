@@ -7,13 +7,21 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Trash, trashTypeImage } from './types/Trash'
 import { initializeApp } from 'firebase/app'
 import { TrashHelpModal } from './TrashHelpModal'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import { onSnapshot } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
+
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
 
 const render = (status: Status) => {
   return <h1>{status}</h1>
@@ -42,6 +50,22 @@ const App: React.VFC = () => {
     lat: 0,
     lng: 0
   })
+
+  React.useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, 'trash'), snapshot => {
+      const fetchedTrashes: Trash[] = []
+      snapshot.forEach(doc => {
+        const trashData = doc.data()
+        const latLng = new google.maps.LatLng(trashData.lat, trashData.lng)
+        fetchedTrashes.push({
+          latLng: latLng,
+          type: trashData.type
+        })
+      })
+      setTrashes(fetchedTrashes)
+    })
+    return () => unsubscribe()
+  }, [])
 
   React.useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -87,11 +111,38 @@ const App: React.VFC = () => {
         type: trash.type
       }
     ])
+
+    const trashData = {
+      lat: currentLat,
+      lng: currentLng,
+      type: trash.type
+    }
+
+    addDoc(collection(db, 'trash'), trashData)
+      .then(docRef => {
+        console.log(' addTrashToCurrentLocation Documento adicionado com ID: ', docRef.id)
+      })
+      .catch(error => {
+        console.error('Erro ao adicionar documento: ', error)
+      })
   }
 
   const addTrashWithClick = (e: google.maps.MapMouseEvent) => {
     if (!trash.type) return
     setTrashes([...trashes, { latLng: e.latLng!, type: trash.type } as Trash])
+    const trashData = {
+      lat:  e.latLng?.lat(),
+      lng: e.latLng?.lng(),
+      type: trash.type
+    }
+
+    addDoc(collection(db, 'trash'), trashData)
+      .then(docRef => {
+        console.log(' addTrashWithClick Documento adicionado com ID: ', docRef.id)
+      })
+      .catch(error => {
+        console.error('Erro ao adicionar documento: ', error)
+      })
   }
 
   const onIdle = (m: google.maps.Map) => {
@@ -126,13 +177,12 @@ const App: React.VFC = () => {
         </Map>
       </Wrapper>
 
-
-        <img
-          src='./logo.png'
-          id='top-bar'
-          alt='Trash Bins'
-          style={{ width: '5rem', height: 'auto' }}
-        />
+      <img
+        src='./logo.png'
+        id='top-bar'
+        alt='Trash Bins'
+        style={{ width: '5rem', height: 'auto' }}
+      />
 
       {/* Fixed bar */}
       <div id='fixed-bar'>

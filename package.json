@@ -36,7 +36,7 @@
     "@googlemaps/typescript-guards": "^2.0.3",
     "bootstrap": "^5.3.2",
     "fast-equals": "^5.0.1",
-    "firebase": "^10.5.0",
+    "firebase": "^10.8.0",
     "framer-motion": "^10.16.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
